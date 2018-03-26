@@ -7,6 +7,7 @@ class Statistics{
 public:
     Statistics();
     ~Statistics();
+    
     int getCycleCount();
     void playerWinIncrement();
     void bankerWinIncrement();
@@ -15,6 +16,7 @@ public:
     int getBankerWinCount();
     int getTieCount();
 
+    void outputStats();
 
 private:
     int playerWins;

@@ -52,3 +52,8 @@ void Statistics::tieIncrement(){
     cycleCount++;
 }
 
+void Statistics::outputStats(){
+    cout << "_____________________BACCARAT SIMULATION STATISTICS________________" << endl << endl;
+    cout << "|  PLAYER WINS:  " << playerWins << "  |  BANKER WINS:  " << bankerWins << "  |  TIES:  " << ties << "  |" << endl;
+}
+

@@ -162,17 +162,27 @@ int main(int argc, char *argv[]){
         banker.printHand();
 
         //record win type, note that increment functions increment cyclecount
-        if (playerValue > bankerValue)
+        if (playerValue > bankerValue){
             gameStats.playerWinIncrement();
-        if (playerValue == bankerValue)
+            cout << "PLAYER won" << endl;
+        }
+        if (playerValue == bankerValue){
             gameStats.bankerWinIncrement();
-        if (playerValue < bankerValue)
+            cout << "TIE" << endl;
+        }
+        if (playerValue < bankerValue){
             gameStats.tieIncrement();
+            cout << "BANKER won" << endl;
+        }
 
         //reset user hands
         player.resetHand();
         banker.resetHand();
     }
+    
+    //output statistics
+    cout << endl << endl;
+    gameStats.outputStats();
 
 
 
