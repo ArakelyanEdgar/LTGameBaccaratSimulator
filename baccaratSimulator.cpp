@@ -55,31 +55,31 @@ int main(int argc, char *argv[]){
     }
 //---------------------------------------------------------------
     //BANKER DRAWING RULES TABLE-----------------
-    vector<vector<bool>> bankerDrawingRulesTable;
+    vector<vector<int>> bankerDrawingRulesTable;
 
     for (int i = 0; i < 7; i++){
         if (i <= 4){
-            vector<bool> row(10, true);
+            vector<int> row(10, 1);
             bankerDrawingRulesTable.push_back(row);
         }
         else{
-            vector<bool> row(10, false);
+            vector<int> row(10, 0);
             bankerDrawingRulesTable.push_back(row);
         }
     }
 
     //referring to wizardofodd's banker drawing rules table
-    bankerDrawingRulesTable[3][8] = false;
-    bankerDrawingRulesTable[4][0] = false;
-    bankerDrawingRulesTable[4][1] = false;
-    bankerDrawingRulesTable[4][8] = false;
-    bankerDrawingRulesTable[4][9] = false;
-    bankerDrawingRulesTable[5][4] = true;
-    bankerDrawingRulesTable[5][5] = true;
-    bankerDrawingRulesTable[5][6] = true;
-    bankerDrawingRulesTable[5][7] = true;
-    bankerDrawingRulesTable[6][6] = true;
-    bankerDrawingRulesTable[6][7] = true;
+    bankerDrawingRulesTable[3][8] = 0;
+    bankerDrawingRulesTable[4][0] = 0;
+    bankerDrawingRulesTable[4][1] = 0;
+    bankerDrawingRulesTable[4][8] = 0;
+    bankerDrawingRulesTable[4][9] = 0;
+    bankerDrawingRulesTable[5][4] = 1;
+    bankerDrawingRulesTable[5][5] = 1;
+    bankerDrawingRulesTable[5][6] = 1;
+    bankerDrawingRulesTable[5][7] = 1;
+    bankerDrawingRulesTable[6][6] = 1;
+    bankerDrawingRulesTable[6][7] = 1;
 
 
 
@@ -94,7 +94,8 @@ int main(int argc, char *argv[]){
 
     //run CYCLELIMIT iterations
     while(gameStats.getCycleCount() < CYCLELIMIT){
-        
+        cout << gameStats.getCycleCount() << endl;
+
         //initiate a new shoe cycle
         int playerValue = 0;
         int bankerValue = 0;
@@ -146,7 +147,7 @@ int main(int argc, char *argv[]){
         if (playerDrewThirdCard && bankerValue <= 6){
             playerThirdCardValue = player.GetHandValue() - playerValue;
             
-            if (bankerDrawingRulesTable[bankerValue][playerThirdCardValue]){
+            if (bankerDrawingRulesTable[bankerValue][playerThirdCardValue] == 1){
                 card = gameShoe.dealCard();
                 banker.drawCard(card);
             }
@@ -158,10 +159,8 @@ int main(int argc, char *argv[]){
 
         cout << "Player's hand: ";
         player.printHand();
-        cout << playerValue << endl;
         cout << "Banker's hand: ";
         banker.printHand();
-        cout << bankerValue << endl;
 
         //record win type, note that increment functions increment cyclecount
         if (playerValue > bankerValue)
@@ -170,8 +169,6 @@ int main(int argc, char *argv[]){
             gameStats.bankerWinIncrement();
         if (playerValue == bankerValue)
             gameStats.tieIncrement();
-
-
 
         //reset user hands
         player.resetHand();

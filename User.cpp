@@ -25,7 +25,7 @@ void User::drawCard(string card){
 
 //resetHand() will simply reset User's hand to empty set
 void User::resetHand(){
-    hand.clear();
+    hand.erase(hand.begin(), hand.end());
 }
 
 //getHandValue() will calculate the value of the hand per baccarat rules

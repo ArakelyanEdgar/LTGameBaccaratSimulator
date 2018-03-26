@@ -39,7 +39,7 @@ int Statistics::getTieCount(){
 
 void Statistics::playerWinIncrement(){
     playerWins++;
-    Statistics::cycleCount++;
+    cycleCount++;
 }
 
 void Statistics::bankerWinIncrement(){

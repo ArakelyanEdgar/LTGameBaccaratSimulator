@@ -30,9 +30,8 @@ Shoe::~Shoe(){
 void Shoe::newCycle(){
     
     //reset shoe if it is not empty
-    if (!shoe.empty()){
-        shoe.clear();
-    }
+    if (!shoe.empty())
+        shoe.erase(shoe.begin(), shoe.end());
 
     //placing 32 ace cards
     shoe.insert(shoe.begin(), 32, "A");
