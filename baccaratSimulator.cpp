@@ -1,6 +1,6 @@
 //Made by Edgar Arakelyan
 //Baccarat simulator
-//run with: "./baccaratSim.exe -c <shoeCycles> -s <numberOfShufflesPerCycle>"
+//run with: "./baccaratSimulator.exe -c <shoeCycles> -s <numberOfShufflesPerCycle>"
 
 #include <iostream>
 #include <sstream>
@@ -59,11 +59,11 @@ int main(int argc, char *argv[]){
 
     for (int i = 0; i < 7; i++){
         if (i <= 4){
-            vector<bool> row(9, true);
+            vector<bool> row(10, true);
             bankerDrawingRulesTable.push_back(row);
         }
         else{
-            vector<bool> row(9, false);
+            vector<bool> row(10, false);
             bankerDrawingRulesTable.push_back(row);
         }
     }
@@ -91,11 +91,6 @@ int main(int argc, char *argv[]){
     User banker;
 
     string card;
-    int playerValue = 0;
-    int bankerValue = 0;
-    int playerThirdCardValue;
-    bool natural = false;
-    bool playerDrewThirdCard = false;
 
     //run CYCLELIMIT iterations
     while(gameStats.getCycleCount() < CYCLELIMIT){
@@ -103,8 +98,9 @@ int main(int argc, char *argv[]){
         //initiate a new shoe cycle
         int playerValue = 0;
         int bankerValue = 0;
+        int playerThirdCardValue = 0;
         bool natural = false;
-        playerDrewThirdCard = false;
+        bool playerDrewThirdCard = false;
         gameShoe.newCycle();
         
         //shuffle the shoe SHUFFLESPERSHOE times
@@ -162,8 +158,10 @@ int main(int argc, char *argv[]){
 
         cout << "Player's hand: ";
         player.printHand();
+        cout << playerValue << endl;
         cout << "Banker's hand: ";
         banker.printHand();
+        cout << bankerValue << endl;
 
         //record win type, note that increment functions increment cyclecount
         if (playerValue > bankerValue)
@@ -172,6 +170,8 @@ int main(int argc, char *argv[]){
             gameStats.bankerWinIncrement();
         if (playerValue == bankerValue)
             gameStats.tieIncrement();
+
+
 
         //reset user hands
         player.resetHand();

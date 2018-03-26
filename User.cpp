@@ -33,7 +33,7 @@ int User::GetHandValue(){
     int cardSum = 0;
     
     //get net points for individual cards in hand
-    for (int i = 0; i < hand.size(); i++){
+    for (unsigned int i = 0; i < hand.size(); i++){
         string card = hand[i];
         if (card == "J" || card == "Q" || card == "K")
             continue;
@@ -49,7 +49,7 @@ int User::GetHandValue(){
 
 //printHand() will print the cards in user's hand
 void User::printHand(){
-    for (int i = 0; i < hand.size(); i++){
+    for (unsigned int i = 0; i < hand.size(); i++){
         cout << hand[i] << " ";
     }
     cout << endl;
