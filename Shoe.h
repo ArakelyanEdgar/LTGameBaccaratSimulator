@@ -12,11 +12,9 @@ public:
     ~Shoe();
     void newCycle();
     void shuffleShoe();
-    int getCycleCount();
     string dealCard();
 
 private:
     vector<string> shoe;
-    int CycleCount;
     int randomFunc(int);
 };

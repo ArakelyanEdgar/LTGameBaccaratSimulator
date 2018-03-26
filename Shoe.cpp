@@ -14,9 +14,8 @@ using namespace std;
 
 
 //Shoe constructor will initialize the 8-deck shoe 
-//by calling newCycle and initalizes cycleCount to 0
+//by calling newCycle
 Shoe::Shoe(){
-    CycleCount = 0;
     //newCycle will increment CycleCount and generate a random deck
     Shoe::newCycle();
 }
@@ -24,11 +23,6 @@ Shoe::Shoe(){
 //Destructor for Shoe
 Shoe::~Shoe(){
     //Destructor isn't actually necessary currently
-}
-
-//Getter function for CycleCount
-int Shoe::getCycleCount(){
-    return CycleCount;
 }
 
 //newCycle will generate a new 8-deck shoe, shuffle the deck,
@@ -55,7 +49,6 @@ void Shoe::newCycle(){
 
     //shuffle the shoe and increment cycle count
     Shoe::shuffleShoe();
-    CycleCount++;
 }
 
 //randomFunc is a custom random generator function used for 
