@@ -8,6 +8,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <algorithm>
+#include <chrono>
 #include "Shoe.h"
 
 using namespace std;
@@ -49,12 +50,8 @@ void Shoe::newCycle(){
 
 //shuffleShoe will shuffle the shoe using a random sort
 void Shoe::shuffleShoe(){
-    //seed value
-    srand(unsigned( time(0)) );
-
-    random_shuffle(shoe.begin(), shoe.end(), [](int i){
-        return rand() % i;
-    });
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    shuffle(shoe.begin(), shoe.end(), default_random_engine(seed));
 }
 
 //dealCard returns a card from the top of shoe and removesthe card from the shoe
