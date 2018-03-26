@@ -72,3 +72,10 @@ void Shoe::shuffleShoe(){
     random_shuffle(shoe.begin(), shoe.end(), Shoe::randomFunc);
 }
 
+//dealCard returns a card from the top of shoe and removesthe card from the shoe
+string Shoe::dealCard(){
+    string card = shoe.back();
+    shoe.pop_back();
+    return card;
+}
+

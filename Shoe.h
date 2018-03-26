@@ -13,6 +13,7 @@ public:
     void newCycle();
     void shuffleShoe();
     int getCycleCount();
+    string dealCard();
 
 private:
     vector<string> shoe;
