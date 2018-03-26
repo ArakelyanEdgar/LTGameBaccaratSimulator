@@ -167,11 +167,11 @@ int main(int argc, char *argv[]){
             cout << "PLAYER won" << endl;
         }
         if (playerValue == bankerValue){
-            gameStats.bankerWinIncrement();
+            gameStats.tieIncrement();
             cout << "TIE" << endl;
         }
         if (playerValue < bankerValue){
-            gameStats.tieIncrement();
+            gameStats.bankerWinIncrement();
             cout << "BANKER won" << endl;
         }
 
