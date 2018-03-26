@@ -94,7 +94,6 @@ int main(int argc, char *argv[]){
 
     //run CYCLELIMIT iterations
     while(gameStats.getCycleCount() < CYCLELIMIT){
-        cout << gameStats.getCycleCount() << endl;
 
         //initiate a new shoe cycle
         int playerValue = 0;
@@ -167,7 +166,7 @@ int main(int argc, char *argv[]){
             gameStats.playerWinIncrement();
         if (playerValue == bankerValue)
             gameStats.bankerWinIncrement();
-        if (playerValue == bankerValue)
+        if (playerValue < bankerValue)
             gameStats.tieIncrement();
 
         //reset user hands
