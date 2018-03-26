@@ -46,15 +46,6 @@ void Shoe::newCycle(){
     shoe.insert(shoe.begin(), 32, "J");
     shoe.insert(shoe.begin(), 32, "Q");
     shoe.insert(shoe.begin(), 32, "K");
-
-    //shuffle the shoe and increment cycle count
-    Shoe::shuffleShoe();
-}
-
-//randomFunc is a custom random generator function used for 
-//random_shuffle called in shuffleShoe()
-int Shoe::randomFunc(int i){
-    return rand() % i;
 }
 
 //shuffleShoe will shuffle the shoe using a random sort
@@ -62,7 +53,9 @@ void Shoe::shuffleShoe(){
     //seed value
     srand(unsigned( time(0)) );
 
-    random_shuffle(shoe.begin(), shoe.end(), Shoe::randomFunc);
+    random_shuffle(shoe.begin(), shoe.end(), [](int i){
+        return rand() % i;
+    });
 }
 
 //dealCard returns a card from the top of shoe and removesthe card from the shoe

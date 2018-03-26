@@ -28,12 +28,27 @@ int Statistics::getPlayerWinCount(){
 }
 
 //GetBankerWinCount is a getter function for bankerWins
-int Statistics::getPlayerWinCount(){
-    return playerWins;
+int Statistics::getBankerWinCount(){
+    return bankerWins;
 }
 
 //getTieCount is a getter function for ties
 int Statistics::getTieCount(){
     return ties;
+}
+
+void Statistics::playerWinIncrement(){
+    playerWins++;
+    cycleCount++;
+}
+
+void Statistics::bankerWinIncrement(){
+    bankerWins++;
+    cycleCount++;
+}
+
+void Statistics::tieIncrement(){
+    ties++;
+    cycleCount++;
 }
 

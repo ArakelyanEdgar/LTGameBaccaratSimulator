@@ -8,6 +8,9 @@ public:
     Statistics();
     ~Statistics();
     int getCycleCount();
+    void playerWinIncrement();
+    void bankerWinIncrement();
+    void tieIncrement();
     int getPlayerWinCount();
     int getBankerWinCount();
     int getTieCount();
